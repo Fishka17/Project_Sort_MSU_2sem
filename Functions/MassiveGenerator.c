@@ -26,13 +26,17 @@ generateArray(int option, int n, long long *a) {
             x -= step;
         }
     } else if (option == 2) { // 2 случай, элемегты упорядочены в обратном порядке
-        unsigned long long step = 0;
-        long long l = (-LLONG_MAX) / n, r = LLONG_MAX / n;
+        long long step = LLONG_MAX / n;
+        if (step == 0) {
+            step = 1;
+        }
+        long long x = 0;
         for (int i = 0; i < n; ++i) {
-            step = r - l;
-            a[i] = l + llabs(arr_elem()) % step;
-            l -= LLONG_MAX / n;
-            r += LLONG_MAX / n;
+            a[i] = x + llabs(arr_elem()) % step;
+            if (rand() & 1) {
+                a[i] = -a[i];
+            }
+            x += step;
         }
     } else { // 3, 4 случай, рандом
         for (int i = 0; i < n; ++i) {
