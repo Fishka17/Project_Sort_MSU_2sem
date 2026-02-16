@@ -13,12 +13,12 @@ main(void) {
     int option;
     scanf("%d", &option);
     long long *arr_first_sort = calloc(n, sizeof(long long));
-    // long long *arr_second_sort = calloc(n, sizeof(long long));
+    long long *arr_second_sort = calloc(n, sizeof(long long));
 
     generateArray(option, n, arr_first_sort);
-    // for (int i = 0; i < n; ++i) {
-    //     arr_second_sort[i] = arr_first_sort[i];
-    // }
+    for (int i = 0; i < n; ++i) {
+        arr_second_sort[i] = arr_first_sort[i];
+    }
     
     for (int i = 0; i < n; ++i) {
         printf("%lld ", arr_first_sort[i]);
@@ -26,13 +26,21 @@ main(void) {
     printf("\n");
 
     bubbleSort(arr_first_sort, n);
+    quickSort(arr_second_sort, 0, n - 1);
 
+
+    printf("Bubble sort res:\n");
     for (int i = 0; i < n; ++i) {
         printf("%lld ", arr_first_sort[i]);
     }
     printf("\n");
+    printf("Quick sort res:\n");
+    for (int i = 0; i < n; ++i) {
+        printf("%lld ", arr_second_sort[i]);
+    }
+    printf("\n");
 
     free(arr_first_sort);
-    // free(arr_second_sort);
+    free(arr_second_sort);
     return 0;
 }
