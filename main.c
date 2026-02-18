@@ -25,9 +25,11 @@ main(void) {
     }
     printf("\n");
 
-    bubbleSort(arr_first_sort, n);
-    quickSort(arr_second_sort, 0, n - 1);
+    Stats data1 = {0, 0};
+    Stats data2 = {0, 0};
 
+    data1 = bubbleSort(arr_first_sort, n);
+    data2 = quickSort(arr_second_sort, 0, n - 1);
 
     printf("Bubble sort res:\n");
     for (int i = 0; i < n; ++i) {
@@ -39,6 +41,10 @@ main(void) {
         printf("%lld ", arr_second_sort[i]);
     }
     printf("\n");
+
+    printf("data:\n");
+    printf("rs1: cmp = %llu swp = %llu\n", data1.cmp, data1.swp);
+    printf("rs2: cmp = %llu swp = %llu\n", data2.cmp, data2.swp);
 
     free(arr_first_sort);
     free(arr_second_sort);

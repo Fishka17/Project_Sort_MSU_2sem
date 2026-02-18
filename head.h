@@ -3,11 +3,16 @@
 
 #include <stddef.h>
 
+// struct of data
+typedef struct { 
+    unsigned long long cmp, swp; 
+} Stats;
+
 // generator
 void generateArray(int option, int n, long long *a);
 
 // sorts
-void bubbleSort(long long *a, int n);
-void quickSort(long long *a, int low, int high);
+Stats bubbleSort(long long *a, int n);
+Stats quickSort(long long *a, int low, int high);
 
 #endif
