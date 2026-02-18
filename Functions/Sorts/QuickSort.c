@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include "head.h"
 
 static void swap(long long *arr, int i, int j) {
     long long temp = arr[i];
@@ -10,8 +11,7 @@ static unsigned long long myAbsll(long long x) {
     return (x < 0) ? (unsigned long long)(-(x + 1)) + 1ULL : (unsigned long long)x;
 }
 
-int partition(long long *arr, int low, int high) {
-
+int partition(long long *arr, int low, int high, Stats *data) {
     // Initialize pivot to be the first element
     long long p = arr[low];
     int i = low;
@@ -21,33 +21,51 @@ int partition(long long *arr, int low, int high) {
 
         // Find the first element greater than
         // the pivot (from starting)
-        while (i <= high - 1 && myAbsll(arr[i]) >= myAbsll(p)) {
-            i++;
+        while (i <= high - 1) {
+            data->cmp++;
+            if (myAbsll(arr[i]) >= myAbsll(p)) {
+                i++;
+            } else {
+                break;
+            }
         }
 
         // Find the first element smaller than
         // the pivot (from last)
-        while (j >= low + 1  && myAbsll(arr[j]) <  myAbsll(p)) {
-            j--;
+        while (j >= low + 1) {
+            data->cmp++;
+            if (myAbsll(arr[j]) <  myAbsll(p)) {
+                j--;
+            } else {
+                break;
+            }
         }
 
         if (i < j) {
             swap(arr, i, j);
+            data->swp++;
         }
     }
-    swap(arr, low, j);
+
+    if (j != low) {
+        swap(arr, low, j);
+        data->swp++;
+    }
+
     return j;
 }
 
-void quickSort(long long *a, int low, int high)  {
+static void quickSort_impl(long long *a, int low, int high, Stats *data) {
     if (low < high) {
-
-        // call partition function to find Partition Index
-        int pi = partition(a, low, high);
-
-        // Recursively call quickSort() for left and right
-        // half based on Partition Index
-        quickSort(a, low, pi - 1);
-        quickSort(a, pi + 1, high);
+        int pi = partition(a, low, high, data);
+        quickSort_impl(a, low, pi - 1, data);
+        quickSort_impl(a, pi + 1, high, data);
     }
+}
+
+Stats quickSort(long long *a, int low, int high) {
+    Stats data = {0, 0};
+    quickSort_impl(a, low, high, &data);
+
+    return data;
 }

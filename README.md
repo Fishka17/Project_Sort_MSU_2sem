@@ -8,6 +8,6 @@ gcc-15 -O2 -Wall -Werror -Wformat-security -Wignored-qualifiers \
 -Wtype-limits -Wempty-body -Wno-logical-op -Wstrict-prototypes \
 -Wold-style-declaration -Wold-style-definition -Wmissing-parameter-type \
 -Wmissing-field-initializers -Wnested-externs -Wno-pointer-sign \
--Wno-unused-result -std=gnu99 -lm main.c Functions/MassiveGenerator.c Functions/Sorts/BubbleSort.c Functions/Sorts/QuickSort.c -o main
+-Wno-unused-result -std=gnu99 -I. -lm main.c Functions/MassiveGenerator.c Functions/Sorts/BubbleSort.c Functions/Sorts/QuickSort.c -o main
 
 Может быть полезно: https://boadycs.gitlab.io/alg-foundations/content/004_recursive/005_quicksort.html
