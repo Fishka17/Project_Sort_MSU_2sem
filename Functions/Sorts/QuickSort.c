@@ -11,7 +11,7 @@ static unsigned long long myAbsll(long long x) {
     return (x < 0) ? (unsigned long long)(-(x + 1)) + 1ULL : (unsigned long long)x;
 }
 
-int partition(long long *arr, int low, int high, Stats *data) {
+static int partition(long long *arr, int low, int high, Stats *data) {
     // Initialize pivot to be the first element
     long long p = arr[low];
     int i = low;
