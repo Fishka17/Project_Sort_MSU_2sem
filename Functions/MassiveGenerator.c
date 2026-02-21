@@ -12,7 +12,9 @@ arr_elem(void) {
 
 void 
 generateArray(int option, int n, long long *a) {
-    if (n <= 0) return;
+    if (n <= 0) {
+        return;
+    }
 
     /*
      * The sorting in this project is by *non-increasing absolute value*.

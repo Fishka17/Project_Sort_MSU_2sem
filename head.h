@@ -1,5 +1,5 @@
-#ifndef COMMON_H
-#define COMMON_H
+#ifndef HEAD_H
+#define HEAD_H
 
 #include <stddef.h>
 
@@ -10,7 +10,8 @@
  * swp  - number of swaps (each swap exchanges two array elements)
  */
 typedef struct { 
-    unsigned long long cmp, swp; 
+    unsigned long long cmp;
+    unsigned long long swp;
 } Stats;
 
 /*
@@ -24,12 +25,15 @@ typedef struct {
  * n     - length of array (n >= 1 expected)
  * a     - output array of length n
  */
-void generateArray(int option, int n, long long *a);
+void 
+generateArray(int option, int n, long long *a);
 
 /* Bubble sort by non-increasing absolute value (|a[i]|). */
-Stats bubbleSort(long long *a, int n);
+Stats 
+bubbleSort(long long *a, int n);
 
 /* Quick sort by non-increasing absolute value (|a[i]|). */
-Stats quickSort(long long *a, int low, int high);
+Stats 
+quickSort(long long *a, int low, int high);
 
 #endif

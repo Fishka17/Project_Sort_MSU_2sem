@@ -1,23 +1,8 @@
-#include <stdlib.h>
 #include "head.h"
+#include "../utils.h"
 
-/* Swap two elements in-place. */
-static void swap(long long *arr, int i, int j) {
-    long long temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-
-/*
- * Absolute value for long long without overflow on LLONG_MIN.
- *
- * For LLONG_MIN, -x overflows, so we compute it via a safe transformation.
- */
-static unsigned long long myAbsll(long long x) {
-    return (x < 0) ? (unsigned long long)(-(x + 1)) + 1ULL : (unsigned long long)x;
-}
-
-Stats bubbleSort(long long *a, int n) {
+Stats 
+bubbleSort(long long *a, int n) {
     Stats data = {0, 0};
 
     /*
@@ -30,8 +15,8 @@ Stats bubbleSort(long long *a, int n) {
             data.cmp++;
 
             /* If the left element is smaller, swap to move bigger |.| left. */
-            if (myAbsll(a[j]) < myAbsll(a[j + 1])) {
-                swap(a, j, j + 1);
+            if (abs_ll(a[j]) < abs_ll(a[j + 1])) {
+                swap_ll(a, (size_t)j, (size_t)j + 1);
                 data.swp++;
             }
         }

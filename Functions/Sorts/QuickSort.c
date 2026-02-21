@@ -1,23 +1,8 @@
-#include <stdlib.h>
 #include "head.h"
+#include "../utils.h"
 
-/* Swap two elements in-place. */
-static void swap(long long *arr, int i, int j) {
-    long long temp = arr[i];
-    arr[i] = arr[j];
-    arr[j] = temp;
-}
-
-/*
- * Absolute value for long long without overflow on LLONG_MIN.
- *
- * For LLONG_MIN, -x overflows, so we compute it via a safe transformation.
- */
-static unsigned long long myAbsll(long long x) {
-    return (x < 0) ? (unsigned long long)(-(x + 1)) + 1ULL : (unsigned long long)x;
-}
-
-static int partition(long long *arr, int low, int high, Stats *data) {
+static int 
+partition(long long *arr, int low, int high, Stats *data) {
     /*
      * Partition step:
      *   - pivot is the first element
@@ -36,7 +21,7 @@ static int partition(long long *arr, int low, int high, Stats *data) {
          */
         while (i <= high - 1) {
             data->cmp++;
-            if (myAbsll(arr[i]) >= myAbsll(p)) {
+            if (abs_ll(arr[i]) >= abs_ll(p)) {
                 i++;
             } else {
                 break;
@@ -48,7 +33,7 @@ static int partition(long long *arr, int low, int high, Stats *data) {
          */
         while (j >= low + 1) {
             data->cmp++;
-            if (myAbsll(arr[j]) <  myAbsll(p)) {
+            if (abs_ll(arr[j]) <  abs_ll(p)) {
                 j--;
             } else {
                 break;
@@ -57,21 +42,22 @@ static int partition(long long *arr, int low, int high, Stats *data) {
 
         /* Swap the misplaced pair. */
         if (i < j) {
-            swap(arr, i, j);
+            swap_ll(arr, (size_t)i, (size_t)j);
             data->swp++;
         }
     }
 
     /* Put the pivot into its final position (index j). */
     if (j != low) {
-        swap(arr, low, j);
+        swap_ll(arr, (size_t)low, (size_t)j);
         data->swp++;
     }
 
     return j;
 }
 
-static void quickSort_impl(long long *a, int low, int high, Stats *data) {
+static void 
+quickSort_impl(long long *a, int low, int high, Stats *data) {
     if (low < high) {
         int pi = partition(a, low, high, data);
 
@@ -81,7 +67,8 @@ static void quickSort_impl(long long *a, int low, int high, Stats *data) {
     }
 }
 
-Stats quickSort(long long *a, int low, int high) {
+Stats 
+quickSort(long long *a, int low, int high) {
     Stats data = {0, 0};
 
     /* Stores statistics. */
