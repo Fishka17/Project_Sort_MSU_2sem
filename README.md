@@ -12,5 +12,3 @@ gcc-15 -O2 -Wall -Werror -Wformat-security -Wignored-qualifiers \
 -I. \
 main.c Functions/MassiveGenerator.c Functions/utils.c \
 Functions/Sorts/BubbleSort.c Functions/Sorts/QuickSort.c -o main
-
-Может быть полезно: https://boadycs.gitlab.io/alg-foundations/content/004_recursive/005_quicksort.html
