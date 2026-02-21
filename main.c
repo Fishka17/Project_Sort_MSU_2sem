@@ -14,9 +14,24 @@ main(void) {
      * option - type of generated array (see generateArray() in MassiveGenerator.c)
      */
     int n;
-    scanf("%d", &n);
+    if (scanf("%d", &n) != 1) {
+        fprintf(stderr, "Input error: expected integer n.\n");
+        return 1;
+    }
     int option;
-    scanf("%d", &option);
+    if (scanf("%d", &option) != 1) {
+        fprintf(stderr, "Input error: expected integer option.\n");
+        return 1;
+    }
+
+    if (n <= 0) {
+        fprintf(stderr, "Input error: n must be > 0.\n");
+        return 1;
+    }
+    if (option < 1 || option > 4) {
+        fprintf(stderr, "Input error: option must be in [1..4].\n");
+        return 1;
+    }
 
     /* Allocate two identical arrays: each sorting algorithm must process
      * the same initial data to make the comparison fair.
