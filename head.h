@@ -4,10 +4,9 @@
 #include <stddef.h>
 
 /*
- * Statistics collected during sorting.
- *
- * cmp  - number of element comparisons (here: comparisons of absolute values)
- * swp  - number of swaps (each swap exchanges two array elements)
+ * Collect statistic
+ * cmp  - number of element comparisons
+ * swp  - number of swaps
  */
 typedef struct { 
     unsigned long long cmp;
@@ -19,10 +18,10 @@ typedef struct {
  *
  * option:
  *   1 - elements are already ordered by non-increasing absolute value
- *   2 - elements are ordered in the reverse order (non-decreasing |a[i]|)
+ *   2 - elements are ordered in the reverse order
  *   3/4 - random elements
  *
- * n     - length of array (n >= 1 expected)
+ * n     - length of array
  * a     - output array of length n
  */
 void 
