@@ -11,3 +11,5 @@ gcc-15 -O2 -Wall -Werror -Wformat-security -Wignored-qualifiers \
 -Wno-unused-result -std=gnu99 -I. -lm main.c Functions/MassiveGenerator.c Functions/Sorts/BubbleSort.c Functions/Sorts/QuickSort.c -o main
 
 Может быть полезно: https://boadycs.gitlab.io/alg-foundations/content/004_recursive/005_quicksort.html
+
+git push --set-upstream origin branch_name
