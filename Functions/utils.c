@@ -2,11 +2,9 @@
 
 /*
  * Absolute value for long long without overflow on LLONG_MIN.
- *
  * For LLONG_MIN, -x overflows, so we compute it via a safe transformation.
  */
 unsigned long long abs_ll(long long x) {
-    /* Avoid UB on -LLONG_MIN by using the “+1 then +1” trick */
     if (x >= 0) {
         return (unsigned long long)x;
     }

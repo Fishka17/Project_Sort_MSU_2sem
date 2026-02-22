@@ -8,8 +8,6 @@ partition(long long *arr, int low, int high, Stats *data) {
      *   - pivot is the first element
      *   - after partition, elements with |x| >= |pivot| tend to be on the left
      *   - elements with |x| <  |pivot| tend to be on the right
-     *
-     * Sorting order: non-increasing absolute value.
      */
     long long p = arr[low];
     int i = low;

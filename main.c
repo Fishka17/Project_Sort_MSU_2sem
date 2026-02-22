@@ -33,9 +33,7 @@ main(void) {
         return 1;
     }
 
-    /* Allocate two identical arrays: each sorting algorithm must process
-     * the same initial data to make the comparison fair.
-     */
+    /* Allocate two identical arrays */
     long long *arr_first_sort = calloc(n, sizeof(long long));
     long long *arr_second_sort = calloc(n, sizeof(long long));
 

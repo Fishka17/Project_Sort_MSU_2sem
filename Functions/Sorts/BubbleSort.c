@@ -4,11 +4,6 @@
 Stats 
 bubbleSort(long long *a, int n) {
     Stats data = {0, 0};
-
-    /*
-     * Bubble sort for order by non-increasing absolute value:
-     *   |a[0]| >= |a[1]| >= ... >= |a[n-1]|.
-     */
     for (int i = 0; i < n - 1; i++) {
         for (int j = 0; j < n - i - 1; j++) {
             /* One comparison of adjacent elements (by absolute value). */

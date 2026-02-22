@@ -12,15 +12,6 @@ arr_elem(void) {
 
 void 
 generateArray(int option, int n, long long *a) {
-    if (n <= 0) {
-        return;
-    }
-
-    /*
-     * The sorting in this project is by *non-increasing absolute value*.
-     * So for options (1) and (2) we build arrays that are already ordered
-     * (by |a[i]|) or ordered in reverse.
-     */
     if (option == 1) { /* Case 1: already sorted by non-increasing |a[i]|. */
         long long step = LLONG_MAX / n;
         if (step == 0) {
